@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://angular.github.com/angularjs.org/css/bootstrap.min.css">
+    <title>Angular Gilt</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://code.angularjs.org/angular-1.0.0rc4.min.js"></script>
+    <script type="text/javascript" src="js/gilt-js-api.js"></script>
+    <script type="text/javascript">
+        function FetchCtrl($scope, $http) {
+            $scope.method = 'GET';
+            $scope.url = 'data/gilt.json';
+         
+
+            $scope.fetch = function() {
+                $scope.code = null;
+                $scope.response = null;
+                $scope.predicate='data.sales.name';
+
+                $http({method: $scope.method, url: $scope.url}).
+                        success(function(data, status) {
+                            $scope.status = status;
+                            $scope.data = data;
+                        }).
+                        error(function(data, status) {
+                            $scope.data = data || "Request failed";
+                            $scope.status = status;
+                        });
+            };
+
+            $scope.updateModel = function(method, url) {
+                $scope.method = method;
+                $scope.url = url;
+            };
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div  ng-controller="FetchCtrl">
+        <h1>Hello</h1>
+        <button ng-click="fetch()">fetch</button><br>
+        Any: <input ng-model="search.$"> <br>
+        <!--
+        <table id="searchObjResults">
+            <tr><th>Sale</th><tr>
+            <tr ng-repeat="s in data.sales | filter:search">
+                <td>{{s.name}}</td>
+            <tr>
+        </table>
+-->
+        <ul>
+            <li ng-repeat="s in data.sales"><a href="{{s.sale}}?apikey=88658e0b728c695d6145ffde625f01f6">{{s.name}}</a>
+                <ol>
+                    <li ng-repeat="i in s.image_urls"><img src="{{i.300x184.url}}" alt="{{i.300x184.url}}">{{s.image_urls}}</li>
+                </ol>
+            </li>
+
+        </ul>
+
+
+        <div>http status code: {{status}}</div>
+        <div>http response data: {{data}}</div>
+    </div>
+</div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="js/angular-1.0.0rc4.min.js"></script>
+<script type="text/javascript" src="js/gilt-js-api.js"></script>
+
+</html>
