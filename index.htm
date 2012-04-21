@@ -5,28 +5,31 @@
     <link rel="stylesheet" href="http://angular.github.com/angularjs.org/css/bootstrap.min.css">
     <title>Angular Gilt</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script src="http://code.angularjs.org/angular-1.0.0rc4.min.js"></script>
+    <script src="http://code.angularjs.org/angular-1.0.0rc6.min.js"></script>
+    <script src="http://code.angularjs.org/angular-resource-1.0.0rc6.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/gilt-js-api.js"></script>
     <script type="text/javascript">
+
         function FetchCtrl($scope, $http) {
-            $scope.method = 'GET';
-            $scope.url = 'data/gilt.json';
-         
+
+            $scope.url = 'https://api.gilt.com/v1/sales/men/active.json?apikey=88658e0b728c695d6145ffde625f01f6';
+            $scope.url='data/gilt.json';
 
             $scope.fetch = function() {
                 $scope.code = null;
                 $scope.response = null;
-                $scope.predicate='data.sales.name';
 
-                $http({method: $scope.method, url: $scope.url}).
-                        success(function(data, status) {
-                            $scope.status = status;
-                            $scope.data = data;
-                        }).
-                        error(function(data, status) {
-                            $scope.data = data || "Request failed";
-                            $scope.status = status;
-                        });
+                $http.get($scope.url).success(success).error(error);
+
+                 function success(data, status) {
+                        $scope.status = status;
+                        $scope.data = data;
+                 };
+
+                 function error(data, status) {
+                        $scope.data = data || "Request failed";
+                        $scope.status = status;
+                 };
             };
 
             $scope.updateModel = function(method, url) {
@@ -36,37 +39,40 @@
         }
     </script>
 </head>
+
+
 <body>
-<div class="container">
+<div class="containerX">
+
     <div  ng-controller="FetchCtrl">
-        <h1>Hello</h1>
+
+        <h1>Gilt API</h1>
         <button ng-click="fetch()">fetch</button><br>
-        Any: <input ng-model="search.$"> <br>
-        <!--
-        <table id="searchObjResults">
-            <tr><th>Sale</th><tr>
-            <tr ng-repeat="s in data.sales | filter:search">
-                <td>{{s.name}}</td>
-            <tr>
-        </table>
--->
-        <ul>
-            <li ng-repeat="s in data.sales"><a href="{{s.sale}}?apikey=88658e0b728c695d6145ffde625f01f6">{{s.name}}</a>
-                <ol>
-                    <li ng-repeat="i in s.image_urls"><img src="{{i.300x184.url}}" alt="{{i.300x184.url}}">{{s.image_urls}}</li>
-                </ol>
-            </li>
+        <div>
+            <div ng-repeat="s in data.sales">
+                <div class="thumbnails">
+                    <div class="span10">
+                        <div class="thumbnail">
+                            <h3><a href="{{s.sale}}?apikey=88658e0b728c695d6145ffde625f01f6">{{s.name}}</a></h3>
+                            <img align="left" style="padding-right:1em;padding-top:0.5em;"
+                                 src="{{s.image_urls.300x184[0].url}}" alt=""
+                                 height="{{s.image_urls.300x184[0].height}}"
+                                 width="{{s.image_urls.300x184[0].width}}" />
+                            <p>{{s.description}}.</p>
+                            <!-- TODO: Fix up date formats -->
+                            <p>{{s.begins}} to {{s.ends}}</p>
+                            <a class="btn" href="{{s.sale}}?apikey=88658e0b728c695d6145ffde625f01f6">Buy {{s.name}}</a>
+                        </div>
+                    </div>
 
-        </ul>
+                </div>
+            </div>
+        </div>
 
-
-        <div>http status code: {{status}}</div>
-        <div>http response data: {{data}}</div>
     </div>
+
 </div>
+
 </body>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="js/angular-1.0.0rc4.min.js"></script>
-<script type="text/javascript" src="js/gilt-js-api.js"></script>
 
 </html>
