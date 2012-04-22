@@ -1,0 +1,13 @@
+
+    <ul class="nav nav-pills">
+        <li ng-class="store=='women' && 'active'"><a href="#" ng-click="fetchStore('women', saleMethod)">Women</a></li>
+        <li ng-class="store=='men' && 'active'"><a href="#" ng-click="fetchStore('men', saleMethod)">Men</a></li>
+        <li ng-class="store=='kids' && 'active'"><a href="#" ng-click="fetchStore('kids', saleMethod)">Kids</a></li>
+        <li ng-class="store=='home' && 'active'"><a href="#" ng-click="fetchStore('home', saleMethod)">Home</a></li>
+    </ul>
+
+    <ul class="nav nav-pills">
+        <li ng-class="saleMethod == active && 'active'"><a href="#" ng-click="fetchStore(store, active)">Active</a></li>
+        <li ng-class="saleMethod == upcoming && 'active'"><a href="#" ng-click="fetchStore(store, upcoming)">Upcoming</a></li>
+    </ul>
+

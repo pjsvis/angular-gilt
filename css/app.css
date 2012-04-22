@@ -1,0 +1,32 @@
+
+
+html, body, th, td, p{
+    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri
+    , "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad
+    , "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L"
+    , Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html, body, th, td, p
+{font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans"
+, "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref"
+, sans-serif;}
+
+body
+{background-color:#F8F8F8;}
+
+html, body, h1, h2, h3, h4, h5, h6, p, th, td, li{
+    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT"
+    , "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma
+    , Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;}
+
+html, body, th, td, p
+{font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans"
+, "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref"
+, sans-serif;}
+
+body{padding-top:0px;}
+.container{width:80%;}
+.ContentFlow{background-color:black;margin-top:50px;}
+.content{margin-top:50px;}
+.thumbnail{padding:1em;}

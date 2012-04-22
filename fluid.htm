@@ -7,9 +7,10 @@
     <title>Angular Gilt</title>
 </head>
 
-
 <body>
-<div class="container" ng-controller="GiltCtrl">
+
+
+<div class="container-fluid" ng-controller="GiltCtrl">
 
     <ng-include src="'partials/navbar.htm'"></ng-include>
 
@@ -17,7 +18,16 @@
 
         <ng-include src="'partials/navpills.htm'"></ng-include>
 
-        <ng-include src="'partials/sales.htm'"></ng-include>
+            <div class="row-fluid">
+                <div class="span10">
+                    <!--Body content-->
+                    <ng-include src="'partials/sales.htm'"></ng-include>
+                </div>
+                <div class="span2">
+                    <!--Sidebar content-->
+
+                </div>
+            </div>
 
     </div>
 

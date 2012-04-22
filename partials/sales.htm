@@ -1,0 +1,22 @@
+<div>
+    <div ng-repeat="s in data.sales">
+        <span class="thumbnails">
+            <span class="span3">
+                <span class="thumbnail well">
+                    <h3><a href="{{s.sale}}?apikey=88658e0b728c695d6145ffde625f01f6">{{s.name}}</a></h3>
+                    <img align="left" style="padding-right:1em;padding-top:0.5em;"
+                         src="{{s.image_urls.300x184[0].url}}" alt=""
+                         height="300"
+                         width="184" />
+                    <p>{{s.description}}.</p>
+                    <p>Begins:  <abbr class="timeago" title="{{s.begins | date:medium}}">{{s.begins | date:medium}}</abbr></p>
+                    <p>Ends: <abbr class="timeago" title="{{s.ends | date:medium}}">{{s.ends | date:medium}}</abbr></p>
+                    <div>
+                        <a class="btn" href="{{s.sale}}?apikey=88658e0b728c695d6145ffde625f01f6">Buy {{s.name}}</a>
+                    </div>
+                </span>
+            </span>
+
+        </span>
+    </div>
+</div>
