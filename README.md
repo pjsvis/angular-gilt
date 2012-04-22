@@ -14,6 +14,11 @@ Fluid is a start at using the Twitter Bootstrap fluid layout
 
 ## Installation
 
-Clone and runweb-server.js using nodeJs
+Clone the repo and run web-server.js using nodeJs
 
+
+
+##Notes
 web-server.js has been patched to allow *.htm extensions
+
+The gilt-js-api.js file has been included in lib/gilt for reference
