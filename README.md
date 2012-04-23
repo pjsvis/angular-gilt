@@ -16,8 +16,6 @@ Fluid is a start at using the Twitter Bootstrap fluid layout
 
 Clone the repo and run web-server.js using nodeJs
 
-
-
 ##Notes
 web-server.js has been patched to allow *.htm extensions
 
